@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Complete, deletTask, editTask} from "../../Redux/Todo/Action";
+import { Complete, deletTask, editTask } from "../../Redux/Todo/Action";
 import "./TaskItem.css";
 
 const TaskItem = ({ todo }) => {
   const [edit, setEdit] = useState(false);
   const [nameTodo, setNameTodo] = useState(todo.name);
   const dispatch = useDispatch();
-  const editTodo= () => {
-    dispatch( editTask(todo.id,nameTodo));
-  }
+  const editTodo = () => {
+    dispatch(editTask(todo.id, nameTodo));
+  };
+  const deletTodo = () => {
+    dispatch(deletTask(todo.id));
+  };
   return (
     <div className="task">
       {edit ? (
         <input
-          style={{ color: "black", fontSize:'20px' }}
+          style={{ color: "black", fontSize: "20px" }}
           placeholder="Update Todo..."
           type="text"
           onChange={(e) => setNameTodo(e.target.value)}
@@ -35,7 +38,7 @@ const TaskItem = ({ todo }) => {
       <button onClick={() => dispatch(Complete(todo.id))}>
         {todo.isDone ? "Undo" : "Complete"}
       </button>
-      <button onClick={() => dispatch(deletTask(todo.id))}>Delete</button>
+      <button onClick={deletTodo}>Delete</button>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../Redux/Todo/Action";
 
 
-const AddTask = () => {
+const AddTask = ({handleFilter, filter}) => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const add = () => {
@@ -20,6 +20,7 @@ const AddTask = () => {
         value={name}
       />
       <button onClick={add}>Add</button>
+      <button onClick={handleFilter}>{filter ? "all" : "filter"}</button>
     </div>
   );
 };

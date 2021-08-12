@@ -2,7 +2,6 @@ import { DELETE_TASK } from "./Type";
 import { ADD_TASK } from "./Type";
 import { EDIT_TASK } from "./Type";
 import { COMPLETE_TASK } from "./Type";
-import {FILTER_TASK} from './Type'
 
 
 const insitialTask = {
@@ -32,17 +31,7 @@ const taskReducer = (state = insitialTask, action) => {
         ...state,
         tasks: [...state.tasks, action.payLoad],
       };
-      case FILTER_TASK :
-      return {
-        ...state,
-        tasks:
-          action.payload.toUpperCase() === 'ISDONE' ||
-          action.payload.toUpperCase().includes('COMPLETE').trim()
-            ? state.todos.filter((el) => el.isDone )
-            : action.payload.toUpperCase() === 'ISNOTDONE'
-            ? state.todos.filter((el) => !el.isDone)
-            : state.todos,
-      };
+      
 
     case EDIT_TASK:
       return {

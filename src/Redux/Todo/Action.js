@@ -1,4 +1,4 @@
-import {EDIT_TASK, FILTER_TASK} from './Type'
+import {EDIT_TASK} from './Type'
 import {ADD_TASK} from './Type'
 import {DELETE_TASK} from './Type'
 import {COMPLETE_TASK} from './Type'
@@ -33,11 +33,5 @@ export const Complete = (id) => {
     }
 }
 
-export const FilterTasks = (id, isDone) => {
-    return{
-        type: FILTER_TASK,
-        payLoad: {id, isDone}
-    }
-}
 
 
